@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router'
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     loadChildren: () =>
-      import('./public/public.module').then(m => m.PublicModule),
+      import('./public/public.module').then((m) => m.PublicModule),
   },
 ]
 
