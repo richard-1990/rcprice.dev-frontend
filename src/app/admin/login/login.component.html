@@ -1,6 +1,17 @@
-<h3>Howdy, GUEST</h3>
-<p>Login to get started...</p>
+<div class="wrapper">
+  <div class="container">
+    <h3>Howdy, Sign in to get started</h3>
 
-<button (click)="auth.googleSignin()">
-  <i class="fa fa-google"></i> Connect Google
-</button>
+    <mat-card class="login-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Sign In</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <button (click)="auth.googleSignin()">
+          <i class="fa fa-google"></i> Connect Google
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
