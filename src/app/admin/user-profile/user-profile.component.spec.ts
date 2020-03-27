@@ -1,24 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { UserProfileComponent } from './user-profile.component'
-import { AngularFireAuth } from '@angular/fire/auth'
-import { BehaviorSubject, of } from 'rxjs'
-import { AngularFirestore } from '@angular/fire/firestore'
+import { of } from 'rxjs'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AuthService } from 'src/app/services/auth.service'
-
-const AngularFirestoreMock = {
-  collection: (name: string) => ({
-    doc: (_id: string) => ({
-      valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
-      set: (_d: any) => new Promise((resolve, _reject) => resolve()),
-    }),
-  }),
-}
-
-const AngularFireAuthMock = {
-  auth: of({ uid: 'ABC123' }),
-}
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent
