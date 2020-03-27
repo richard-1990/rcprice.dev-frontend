@@ -3,6 +3,12 @@ import { Routes, RouterModule } from '@angular/router'
 
 const routes: Routes = [
   {
+    path: 'admin',
+    // pathMatch: 'full',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: '',
     // pathMatch: 'full',
     loadChildren: () =>
