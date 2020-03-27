@@ -8,6 +8,7 @@ import { NavigationComponent } from './navigation/navigation.component'
 import { AdminComponent } from './admin.component'
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     UserProfileComponent,
     AdminComponent,
     NavigationComponent,
+    DashboardComponent,
   ],
   imports: [
     MaterialModule,
@@ -29,6 +31,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
         path: '',
         component: AdminComponent,
         children: [
+          {
+            path: 'dashboard',
+            component: DashboardComponent,
+          },
           {
             path: 'user-profile',
             component: UserProfileComponent,

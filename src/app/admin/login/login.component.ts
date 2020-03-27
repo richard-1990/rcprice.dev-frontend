@@ -13,7 +13,7 @@ export class LoginComponent {
   constructor(public auth: AuthService, public router: Router) {
     auth.user$.subscribe((user) => {
       if (user) {
-        this.router.navigate(['/admin/user-profile'])
+        this.router.navigate(['/admin/dashboard'])
       }
     })
   }
