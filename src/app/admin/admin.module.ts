@@ -11,8 +11,8 @@ import { AdminComponent } from './admin.component'
   declarations: [
     LoginComponent,
     UserProfileComponent,
-    NavigationComponent,
     AdminComponent,
+    NavigationComponent,
   ],
   imports: [
     MaterialModule,
