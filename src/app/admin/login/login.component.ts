@@ -9,7 +9,6 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent {
   constructor(public auth: AuthService, public router: Router) {
-    console.log(auth.user$)
     auth.user$.subscribe((user) => {
       if (user) {
         this.router.navigate(['/admin/user-profile'])
