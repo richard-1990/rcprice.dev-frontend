@@ -21,6 +21,10 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router
   ) {
+    this.getUser()
+  }
+
+  async getUser() {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
