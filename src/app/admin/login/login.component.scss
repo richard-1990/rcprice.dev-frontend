@@ -2,10 +2,14 @@
   height: 100%;
   background-color: gainsboro;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .container {
-    width: 40rem;
+    width: 30%;
+    max-width: 40rem;
+    .login-card {
+      text-align: center;
+    }
   }
-}
-
-.login-card {
 }

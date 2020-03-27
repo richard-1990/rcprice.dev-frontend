@@ -7,6 +7,8 @@ import { MaterialModule } from '../material/material.module'
 import { NavigationComponent } from './navigation/navigation.component'
 import { AdminComponent } from './admin.component'
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -16,6 +18,7 @@ import { AdminComponent } from './admin.component'
   ],
   imports: [
     MaterialModule,
+    FontAwesomeModule,
     RouterModule.forChild([
       {
         path: '',
