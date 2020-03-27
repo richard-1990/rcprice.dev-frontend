@@ -9,6 +9,8 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 import { environment } from '../environments/environment'
 
 @NgModule({
@@ -20,6 +22,7 @@ import { environment } from '../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
