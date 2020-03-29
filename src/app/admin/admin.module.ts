@@ -9,6 +9,9 @@ import { AdminComponent } from './admin.component'
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { DashboardComponent } from './dashboard/dashboard.component'
+import { AdminGuard } from './admin.guard'
+import { BlogComponent } from './blog/blog.component'
+import { ProjectsComponent } from './projects/projects.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     AdminComponent,
     NavigationComponent,
     DashboardComponent,
+    BlogComponent,
+    ProjectsComponent,
   ],
   imports: [
     MaterialModule,
@@ -30,10 +35,19 @@ import { DashboardComponent } from './dashboard/dashboard.component'
       {
         path: '',
         component: AdminComponent,
+        canActivate: [AdminGuard],
         children: [
           {
             path: 'dashboard',
             component: DashboardComponent,
+          },
+          {
+            path: 'projects',
+            component: ProjectsComponent,
+          },
+          {
+            path: 'blog',
+            component: BlogComponent,
           },
           {
             path: 'user-profile',
