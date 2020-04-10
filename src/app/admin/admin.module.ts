@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { LoginComponent } from './login/login.component'
-import { RouterModule } from '@angular/router'
-import { UserProfileComponent } from './user-profile/user-profile.component'
-import { MaterialModule } from '../material/material.module'
-import { NavigationComponent } from './navigation/navigation.component'
-import { AdminComponent } from './admin.component'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MaterialModule } from '../material/material.module';
+import { NavigationComponent } from './navigation/navigation.component';
+import { AdminComponent } from './admin.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
