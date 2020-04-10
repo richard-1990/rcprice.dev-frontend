@@ -9,6 +9,9 @@ import { AdminComponent } from './admin.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BlogComponent } from './blog/blog.component';
+import { BlogEditComponent } from './blog/edit/edit.component';
+import { BlogCreateComponent } from './blog/create/create.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AdminComponent,
     NavigationComponent,
     DashboardComponent,
+    BlogComponent,
+    BlogEditComponent,
+    BlogCreateComponent,
   ],
   imports: [
     MaterialModule,
@@ -34,6 +40,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
           {
             path: 'dashboard',
             component: DashboardComponent,
+          },
+          {
+            path: 'blog',
+            component: BlogComponent,
           },
           {
             path: 'user-profile',
