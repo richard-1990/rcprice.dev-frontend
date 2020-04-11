@@ -14,15 +14,12 @@
         formControlName="title"
         required
       />
-      <!-- <mat-error *ngIf="title.invalid">{{ getErrorMessage() }}</mat-error> -->
+      <mat-error *ngIf="title.errors?.required">Title is required.</mat-error>
+      <mat-error *ngIf="title.errors?.minlength"
+        >Name must be at least 3 characters long.</mat-error
+      >
     </mat-form-field>
-
-    <!-- <mat-form-field class="example-full-width">
-      <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-    </mat-form-field> -->
   </form>
-  Form Status: {{ createBlogForm.status | json }}
 </div>
 <div mat-dialog-actions>
   <button mat-button color="error" (click)="onNoClick()">Cancel</button>

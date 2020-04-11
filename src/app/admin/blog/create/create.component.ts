@@ -9,8 +9,12 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class BlogCreateComponent {
   createBlogForm = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
+
+  get title() {
+    return this.createBlogForm.get('title');
+  }
 
   constructor(public dialogRef: MatDialogRef<BlogCreateComponent>) {}
 
