@@ -13,7 +13,8 @@
     "dev:ssr": "ng run front-end:serve-ssr",
     "serve:ssr": "node dist/front-end/server/main.js",
     "build:ssr": "ng build --prod && ng run front-end:server:production",
-    "prerender": "ng run front-end:prerender"
+    "prerender": "ng run front-end:prerender",
+    "git:delete-merged": "git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d"
   },
   "private": true,
   "dependencies": {
