@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./public/public.module').then((m) => m.PublicModule),
   },
-]
+];
 
 @NgModule({
   imports: [
