@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { BlogCreateComponent } from './create/create.component';
 
@@ -18,14 +14,10 @@ export class BlogComponent {
   title = '';
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(BlogCreateComponent, {
-      data: { title: this.title },
-    });
+    const dialogRef = this.dialog.open(BlogCreateComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.title = result;
-      console.log(this.title);
     });
   }
 }

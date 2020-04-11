@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogEditComponent } from './blog/edit/edit.component';
 import { BlogCreateComponent } from './blog/create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BlogCreateComponent } from './blog/create/create.component';
   imports: [
     MaterialModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

@@ -1,18 +1,22 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-interface CreateBlog {
-  title: string;
-}
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-blog-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
 })
 export class BlogCreateComponent {
-  constructor(
-    public dialogRef: MatDialogRef<BlogCreateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CreateBlog
-  ) {}
+  createBlogForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+  });
+
+  constructor(public dialogRef: MatDialogRef<BlogCreateComponent>) {}
+
+  createNewBlog(): void {
+    console.log(this.createBlogForm);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -1,9 +1,20 @@
 <h1 mat-dialog-title>Create a new blog entry</h1>
 <div mat-dialog-content>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
+  <form
+    class="blog-create-form"
+    [formGroup]="createBlogForm"
+    (ngSubmit)="createNewBlog()"
+  >
+    <mat-form-field class="full-width">
       <mat-label>Title</mat-label>
-      <input matInput placeholder="My super cool blog title" value="" />
+      <input
+        matInput
+        placeholder="My super cool blog title"
+        name="title"
+        formControlName="title"
+        required
+      />
+      <!-- <mat-error *ngIf="title.invalid">{{ getErrorMessage() }}</mat-error> -->
     </mat-form-field>
 
     <!-- <mat-form-field class="example-full-width">
@@ -11,15 +22,16 @@
       <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
     </mat-form-field> -->
   </form>
+  Form Status: {{ createBlogForm.status | json }}
 </div>
 <div mat-dialog-actions>
   <button mat-button color="error" (click)="onNoClick()">Cancel</button>
   <button
-    mat-button
+    mat-raised-button
+    type="submit"
     color="primary"
-    cdkFocusInitial
-    [mat-dialog-close]="data.title"
+    (click)="createNewBlog()"
   >
-    Save
+    Create
   </button>
 </div>
