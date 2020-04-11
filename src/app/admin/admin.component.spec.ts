@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminComponent } from './admin.component';
+import { AuthService } from '../services/auth.service';
+import { of } from 'rxjs';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -8,6 +10,14 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            user$: of({ uid: 'ABC123', email: 'test@email.com' }),
+          },
+        },
+      ],
       declarations: [AdminComponent],
     }).compileComponents();
   }));

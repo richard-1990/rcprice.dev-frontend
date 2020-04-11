@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MaterialModule } from '../material/material.module';
-import { NavigationComponent } from './navigation/navigation.component';
 import { AdminComponent } from './admin.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -19,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     UserProfileComponent,
     AdminComponent,
-    NavigationComponent,
     DashboardComponent,
     BlogComponent,
     BlogEditComponent,

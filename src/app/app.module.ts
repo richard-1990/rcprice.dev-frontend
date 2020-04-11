@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { environment } from '../environments/environment';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
