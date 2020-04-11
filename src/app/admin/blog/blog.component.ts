@@ -15,15 +15,17 @@ import { BlogCreateComponent } from './create/create.component';
 export class BlogComponent {
   constructor(public dialog: MatDialog) {}
 
-  name: string;
+  title = '';
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BlogCreateComponent, {
-      data: { name: 'test' },
+      data: { title: this.title },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.title = result;
+      console.log(this.title);
     });
   }
 }
