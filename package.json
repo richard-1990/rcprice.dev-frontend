@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "test:ci": "ng test -- --watch=false --code-coverage --browsers=ChromeHeadless",
-    "lint": "eslint \"**/*.{js,ts}\" --fix",
+    "lint": "eslint \"**/*.{js,ts}\" --quiet --fix",
     "prettier": "prettier --write 'src/**/*.{ts,js,scss}'",
     "e2e": "ng e2e",
     "dev:ssr": "ng run front-end:serve-ssr",
