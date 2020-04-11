@@ -19,7 +19,7 @@ export class BlogComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BlogCreateComponent, {
-      data: { name: this.name },
+      data: { name: 'test' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
