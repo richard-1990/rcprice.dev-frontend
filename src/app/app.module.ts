@@ -9,12 +9,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { environment } from '../environments/environment';
 import { LayoutModule } from '@angular/cdk/layout';
-import { AuthService } from './services/auth.service';
-import { SnackService } from './services/snack.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
