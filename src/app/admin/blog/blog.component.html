@@ -2,4 +2,12 @@
   Create a new entry
 </button>
 
+<div>
+  <ul>
+    <li *ngFor="let blog of blogs">
+      <a routerLink="{{ blog.id }}">{{ blog.title }}</a>
+    </li>
+  </ul>
+</div>
+
 {{ blogs | json }}

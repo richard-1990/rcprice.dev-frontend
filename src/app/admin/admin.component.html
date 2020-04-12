@@ -9,10 +9,16 @@
   >
     <mat-toolbar></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active"
+      <a
+        mat-list-item
+        [routerLink]="['/admin', 'dashboard']"
+        routerLinkActive="active"
         >Dashboard</a
       >
-      <a mat-list-item routerLink="/admin/blog" routerLinkActive="active"
+      <a
+        mat-list-item
+        [routerLink]="['/admin', 'blog']"
+        routerLinkActive="active"
         >Blog</a
       >
       <a

@@ -52,6 +52,10 @@ import { SharedModule } from "../shared/shared.module";
             component: BlogComponent,
           },
           {
+            path: "blog/:id",
+            component: BlogEditComponent,
+          },
+          {
             path: "user-profile",
             component: UserProfileComponent,
           },

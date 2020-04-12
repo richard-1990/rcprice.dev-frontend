@@ -4,6 +4,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "src/app/services/auth.service";
 import { SnackService } from "src/app/services/snack.service";
 import { Blog } from "./blog";
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
 // import { Blog } from './blog';
 
 @Injectable({
@@ -32,9 +34,18 @@ export class BlogService {
       });
   }
 
-  getBlogEntries(): any {
+  getBlogEntries(): Observable<Blog[]> {
     return this.db
-      .collection("blogs", (ref) => ref.orderBy("title").limit(5))
-      .valueChanges();
+      .collection("blogs")
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as Blog;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
   }
 }
