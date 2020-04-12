@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router,
-} from '@angular/router'
-import { Observable } from 'rxjs'
-import { AuthService } from '../services/auth.service'
-import { take, map, tap } from 'rxjs/operators'
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { take, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +24,10 @@ export class AdminGuard implements CanActivate {
       map((user) => !!user), // <-- map to boolean
       tap((loggedIn) => {
         if (!loggedIn) {
-          console.log('access denied')
-          this.router.navigate(['/login'])
+          console.log('access denied');
+          this.router.navigate(['/login']);
         }
       })
-    )
+    );
   }
 }
