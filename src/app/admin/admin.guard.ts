@@ -3,22 +3,25 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { SnackService } from '../services/snack.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  canActivate(
+  constructor(private afAuth: AngularFireAuth, private snack: SnackService) {}
+
+  async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return true;
+  ): Promise<boolean> {
+    const user = await this.afAuth.currentUser;
+    const isLoggedIn = !!user;
+    if (!isLoggedIn) {
+      this.snack.authError();
+    }
+    return isLoggedIn;
   }
 }

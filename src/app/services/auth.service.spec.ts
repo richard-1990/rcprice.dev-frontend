@@ -6,10 +6,10 @@ import { of, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { RouterTestingModule } from '@angular/router/testing';
 
-const AngularFireAuthMocks = {
+export const AngularFireAuthMocks = {
   authState: of({ uid: 'ABC123' }),
 };
-const AngularFirestoreMocks = {
+export const AngularFirestoreMocks = {
   collection: (name: string) => ({
     doc: (_id: string) => ({
       valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
