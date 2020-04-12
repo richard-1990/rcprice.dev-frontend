@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/services/auth.service';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AuthService } from "src/app/services/auth.service";
 // import { Blog } from './blog';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class BlogService {
   constructor(private authService: AuthService, private db: AngularFirestore) {}

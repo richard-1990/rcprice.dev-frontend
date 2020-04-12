@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from '../models/user.model';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { User } from "../models/user.model";
 
-import { auth } from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from "firebase/app";
+import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-} from '@angular/fire/firestore';
+} from "@angular/fire/firestore";
 
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, of } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class AuthService {
   user$: Observable<User>;
 
@@ -28,10 +28,10 @@ export class AuthService {
     this.user$ = this.auth.authState.pipe(
       switchMap((user) => {
         if (user) {
-          console.log('here?');
+          console.log("here?");
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          console.log('shit');
+          console.log("shit");
           return of(null);
         }
       })
@@ -61,6 +61,6 @@ export class AuthService {
 
   async signOut() {
     await this.auth.signOut();
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
   }
 }
