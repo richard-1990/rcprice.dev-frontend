@@ -12,6 +12,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatTableModule } from "@angular/material/table";
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 const modules = [
@@ -29,6 +31,7 @@ const modules = [
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
+  MatTableModule,
 ];
 
 @NgModule({

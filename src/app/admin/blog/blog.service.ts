@@ -24,7 +24,8 @@ export class BlogService {
       .collection("blogs")
       .add({
         title,
-        author: user.uid,
+        authorId: user.uid,
+        authorName: user.displayName,
       })
       .then((docRef) => {
         return docRef.id;

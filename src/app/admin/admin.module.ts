@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AdminGuard } from "./admin.guard";
 import { ProjectsComponent } from "./projects/projects.component";
 import { SharedModule } from "../shared/shared.module";
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -57,6 +56,11 @@ import { SharedModule } from "../shared/shared.module";
           },
           {
             path: "user-profile",
+            component: UserProfileComponent,
+          },
+          {
+            // @todo Bespoke user profile paths
+            path: "user-profile/:id",
             component: UserProfileComponent,
           },
         ],
