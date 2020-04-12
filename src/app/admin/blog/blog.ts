@@ -1,9 +1,25 @@
 export class Blog {
-  constructor(
-    public uid: string,
-    public author: string,
-    public title: string,
-    public description?: string,
-    public content?: string
-  ) {}
+  author: string;
+  title: string;
+  description?: string;
+  content?: string;
+  labels?: string;
+
+  constructor({
+    author,
+    title,
+    description = null,
+    content = null,
+    labels = null,
+  }) {
+    this.author = author;
+    this.title = title;
+    this.description = description;
+    this.content = content;
+    this.labels = labels;
+  }
+}
+
+class Label {
+  constructor(public name: string) {}
 }
