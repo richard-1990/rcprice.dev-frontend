@@ -19,4 +19,10 @@ export class SnackService {
       .pipe(tap(() => this.router.navigate(["/login"])))
       .subscribe();
   }
+
+  firebaseError(message?: string) {
+    this.snackBar.open(message, "OK", {
+      duration: 5000,
+    });
+  }
 }

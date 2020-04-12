@@ -22,9 +22,10 @@ export class BlogCreateComponent {
     public blogService: BlogService
   ) {}
 
-  createNewBlog(): void {
+  async createNewBlog() {
     if (this.createBlogForm.status === "VALID") {
-      this.blogService.createBlogEntry(this.title.value);
+      const docId = await this.blogService.createBlogEntry(this.title.value);
+      console.log(docId);
     }
   }
 

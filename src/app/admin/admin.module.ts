@@ -23,11 +23,11 @@ import { SharedModule } from "../shared/shared.module";
     BlogComponent,
     BlogEditComponent,
     BlogCreateComponent,
+    ProjectsComponent,
   ],
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    ProjectsComponent,
     RouterModule.forChild([
       {
         path: "",
