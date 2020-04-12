@@ -15,6 +15,7 @@ import { switchMap } from "rxjs/operators";
 @Injectable({ providedIn: "root" })
 export class AuthService {
   user$: Observable<User>;
+  redirectUrl: string;
 
   constructor(
     private auth: AngularFireAuth,

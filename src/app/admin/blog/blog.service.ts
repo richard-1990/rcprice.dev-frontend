@@ -48,4 +48,8 @@ export class BlogService {
         )
       );
   }
+
+  getSingleBlog(id: string) {
+    return this.db.collection("blogs").doc(id).valueChanges();
+  }
 }
