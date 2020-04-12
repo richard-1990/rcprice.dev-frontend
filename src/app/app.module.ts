@@ -13,6 +13,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { environment } from '../environments/environment';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AuthService } from './services/auth.service';
+import { SnackService } from './services/snack.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +26,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FontAwesomeModule,
+    SharedModule,
     LayoutModule,
   ],
   providers: [],

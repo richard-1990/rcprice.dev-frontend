@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { MaterialModule } from '../material/material.module';
 import { AdminComponent } from './admin.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminGuard } from './admin.guard';
 import { BlogComponent } from './blog/blog.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { ProjectsComponent } from './projects/projects.component';
     ProjectsComponent,
   ],
   imports: [
-    MaterialModule,
-    FontAwesomeModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',

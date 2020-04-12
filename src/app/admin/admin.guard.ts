@@ -3,31 +3,25 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { take, map, tap } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { SnackService } from '../services/snack.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private afAuth: AngularFireAuth, private snack: SnackService) {}
 
-  canActivate(
+  async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.auth.user$.pipe(
-      take(1),
-      map((user) => !!user), // <-- map to boolean
-      tap((loggedIn) => {
-        if (!loggedIn) {
-          console.log('access denied');
-          this.router.navigate(['/login']);
-        }
-      })
-    );
+  ): Promise<boolean> {
+    const user = await this.afAuth.currentUser;
+    const isLoggedIn = !!user;
+    if (!isLoggedIn) {
+      this.snack.authError();
+    }
+    return isLoggedIn;
   }
 }
