@@ -9,10 +9,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { environment } from '../environments/environment';
 import { LayoutModule } from '@angular/cdk/layout';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FontAwesomeModule,
+    SharedModule,
     LayoutModule,
   ],
   providers: [],
