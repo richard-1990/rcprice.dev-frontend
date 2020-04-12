@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
 import { FormControl, Validators, FormGroup } from "@angular/forms";
 import { BlogService } from "../blog.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-blog-create",
@@ -19,13 +20,15 @@ export class BlogCreateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<BlogCreateComponent>,
-    public blogService: BlogService
+    public blogService: BlogService,
+    public router: Router
   ) {}
 
   async createNewBlog() {
     if (this.createBlogForm.status === "VALID") {
       const docId = await this.blogService.createBlogEntry(this.title.value);
-      console.log(docId);
+      this.dialogRef.close();
+      this.router.navigate(["/admin", "blog", docId]);
     }
   }
 
