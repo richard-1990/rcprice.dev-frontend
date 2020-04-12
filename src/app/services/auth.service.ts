@@ -17,7 +17,7 @@ export class AuthService {
   user$: Observable<User>;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private auth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
@@ -25,11 +25,13 @@ export class AuthService {
   }
 
   async getUser() {
-    this.user$ = this.afAuth.authState.pipe(
+    this.user$ = this.auth.authState.pipe(
       switchMap((user) => {
         if (user) {
+          console.log('here?');
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          console.log('shit');
           return of(null);
         }
       })
@@ -38,7 +40,7 @@ export class AuthService {
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
+    const credential = await this.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
@@ -58,7 +60,7 @@ export class AuthService {
   }
 
   async signOut() {
-    await this.afAuth.signOut();
+    await this.auth.signOut();
     this.router.navigate(['/']);
   }
 }

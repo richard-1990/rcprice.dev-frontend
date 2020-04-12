@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-blog-create',
@@ -16,10 +17,15 @@ export class BlogCreateComponent {
     return this.createBlogForm.get('title');
   }
 
-  constructor(public dialogRef: MatDialogRef<BlogCreateComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<BlogCreateComponent>,
+    public blogService: BlogService
+  ) {}
 
   createNewBlog(): void {
-    console.log(this.createBlogForm);
+    if (this.createBlogForm.status === 'VALID') {
+      this.blogService.createBlogEntry(this.title.value);
+    }
   }
 
   onNoClick(): void {
