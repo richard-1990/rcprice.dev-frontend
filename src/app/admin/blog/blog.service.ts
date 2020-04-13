@@ -35,9 +35,22 @@ export class BlogService {
       });
   }
 
+  async saveBlogEntry(id: string, blog: Blog) {
+    return await this.db
+      .collection("blogs")
+      .doc(id)
+      .set({ ...blog }, { merge: true })
+      .then(() => {
+        this.snackService.firebaseSuccess("Saved");
+      })
+      .catch((error) => {
+        this.snackService.firebaseError(error?.message);
+      });
+  }
+
   getBlogEntries(): Observable<Blog[]> {
     return this.db
-      .collection("blogs")
+      .collection("blogs", (ref) => ref.orderBy("title"))
       .snapshotChanges()
       .pipe(
         map((actions) =>
@@ -50,7 +63,7 @@ export class BlogService {
       );
   }
 
-  getSingleBlog(id: string) {
-    return this.db.collection("blogs").doc(id).valueChanges();
+  getSingleBlog(id: string): Observable<Blog> {
+    return this.db.collection("blogs").doc<Blog>(id).valueChanges();
   }
 }

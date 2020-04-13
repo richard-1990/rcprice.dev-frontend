@@ -10,7 +10,7 @@ import { BlogService } from "./blog.service";
   styleUrls: ["./blog.component.scss"],
 })
 export class BlogComponent implements OnInit {
-  displayedColumns: string[] = ["title", "author"];
+  displayedColumns: string[] = ["title", "author", "createdAt"];
   blogs = [];
 
   constructor(public dialog: MatDialog, public blogService: BlogService) {}
