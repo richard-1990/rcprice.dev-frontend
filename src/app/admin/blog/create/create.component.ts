@@ -1,6 +1,11 @@
 import { Component } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
-import { FormControl, Validators, FormGroup } from "@angular/forms";
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  AbstractControl,
+} from "@angular/forms";
 import { BlogService } from "../blog.service";
 import { Router } from "@angular/router";
 
@@ -14,7 +19,7 @@ export class BlogCreateComponent {
     title: new FormControl("", [Validators.required, Validators.minLength(3)]),
   });
 
-  get title() {
+  get title(): AbstractControl {
     return this.createBlogForm.get("title");
   }
 
@@ -24,7 +29,7 @@ export class BlogCreateComponent {
     public router: Router
   ) {}
 
-  async createNewBlog() {
+  async createNewBlog(): Promise<void> {
     if (this.createBlogForm.status === "VALID") {
       const docId = await this.blogService.createBlogEntry(this.title.value);
       this.dialogRef.close();

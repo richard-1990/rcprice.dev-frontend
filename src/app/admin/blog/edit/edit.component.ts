@@ -7,6 +7,7 @@ import {
   FormControl,
   Validators,
   FormBuilder,
+  AbstractControl,
 } from "@angular/forms";
 import { ContentChange, QuillEditorComponent } from "ngx-quill";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
@@ -36,7 +37,7 @@ export class BlogEditComponent implements OnInit {
     content: ["", Validators.required],
     labels: [""],
   });
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params["id"];
       this.blogService.getSingleBlog(this.id).subscribe((blog) => {
@@ -59,25 +60,22 @@ export class BlogEditComponent implements OnInit {
 
   async saveBlog() {
     if (this.editBlogForm.status === "VALID") {
-      const docId = await this.blogService.saveBlogEntry(
-        this.id,
-        this.editBlogForm.value
-      );
+      await this.blogService.saveBlogEntry(this.id, this.editBlogForm.value);
     }
   }
 
-  get title() {
+  get title(): AbstractControl {
     return this.editBlogForm.get("title");
   }
-  get description() {
+  get description(): AbstractControl {
     return this.editBlogForm.get("description");
   }
 
-  get content() {
+  get content(): AbstractControl {
     return this.editBlogForm.get("content");
   }
 
-  get labels() {
+  get labels(): AbstractControl {
     return this.editBlogForm.get("labels");
   }
 }
