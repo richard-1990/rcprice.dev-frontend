@@ -9,7 +9,7 @@ describe("SnackService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatSnackBarModule, RouterTestingModule],
+      imports: [RouterTestingModule, MatSnackBarModule, RouterTestingModule],
     });
     service = TestBed.inject(SnackService);
   });

@@ -58,7 +58,7 @@ export class BlogEditComponent implements OnInit {
       });
   }
 
-  async saveBlog() {
+  async saveBlog(): Promise<void> {
     if (this.editBlogForm.status === "VALID") {
       await this.blogService.saveBlogEntry(this.id, this.editBlogForm.value);
     }

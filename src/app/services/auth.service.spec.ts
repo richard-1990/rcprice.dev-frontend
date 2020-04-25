@@ -1,8 +1,8 @@
 import { TestBed } from "@angular/core/testing";
 
 import { AuthService } from "./auth.service";
-import { AngularFireAuth } from "@angular/fire/auth";
 import { of, BehaviorSubject } from "rxjs";
+import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { RouterTestingModule } from "@angular/router/testing";
 
