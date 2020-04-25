@@ -1,0 +1,60 @@
+<h1>Edit</h1>
+<form
+  class="blog-create-form"
+  [formGroup]="editBlogForm"
+  (ngSubmit)="saveBlog()"
+>
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      placeholder="My super cool blog title"
+      name="title"
+      formControlName="title"
+      required
+    />
+    <mat-error *ngIf="title?.errors?.required">Title is required.</mat-error>
+    <mat-error *ngIf="title?.errors?.minlength"
+      >Name must be at least 3 characters long.</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      placeholder="My super cool blog description"
+      name="description"
+      formControlName="description"
+      required
+    />
+    <mat-error *ngIf="description?.errors?.required"
+      >Description is required.</mat-error
+    >
+    <mat-error *ngIf="description?.errors?.minlength"
+      >Description must be at least 3 characters long.</mat-error
+    >
+  </mat-form-field>
+  <quill-editor
+    #editor
+    [formControl]="editBlogForm.controls['content']"
+    formControlName="content"
+  >
+  </quill-editor>
+
+  <mat-form-field class="full-width">
+    <mat-label>Labels</mat-label>
+    <input
+      matInput
+      placeholder="My super cool blog labels"
+      name="labels"
+      formControlName="labels"
+      required
+    />
+    <mat-error *ngIf="labels?.errors?.required">Labels is required.</mat-error>
+    <mat-error *ngIf="labels?.errors?.minlength"
+      >Labels must be at least 3 characters long.</mat-error
+    >
+  </mat-form-field>
+  <input type="submit" value="save" />
+</form>
+{{ blog | json }}

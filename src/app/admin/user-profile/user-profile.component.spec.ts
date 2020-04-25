@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserProfileComponent } from './user-profile.component';
-import { of } from 'rxjs';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserProfileComponent } from "./user-profile.component";
+import { of } from "rxjs";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AuthService } from "src/app/services/auth.service";
 
-describe('UserProfileComponent', () => {
+describe("UserProfileComponent", () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
 
@@ -16,7 +16,7 @@ describe('UserProfileComponent', () => {
         {
           provide: AuthService,
           useValue: {
-            user$: of({ uid: 'ABC123', email: 'test@email.com' }),
+            user$: of({ uid: "ABC123", email: "test@email.com" }),
           },
         },
       ],
@@ -30,7 +30,7 @@ describe('UserProfileComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
