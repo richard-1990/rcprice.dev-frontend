@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from '../models/user.model';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { User } from "../models/user.model";
 
-import { auth } from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from "firebase/app";
+import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-} from '@angular/fire/firestore';
+} from "@angular/fire/firestore";
 
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, of } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class AuthService {
   user$: Observable<User>;
+  redirectUrl: string;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private auth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
@@ -25,7 +26,7 @@ export class AuthService {
   }
 
   async getUser() {
-    this.user$ = this.afAuth.authState.pipe(
+    this.user$ = this.auth.authState.pipe(
       switchMap((user) => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -38,7 +39,7 @@ export class AuthService {
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
+    const credential = await this.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
@@ -58,7 +59,7 @@ export class AuthService {
   }
 
   async signOut() {
-    await this.afAuth.signOut();
-    this.router.navigate(['/']);
+    await this.auth.signOut();
+    this.router.navigate(["/"]);
   }
 }

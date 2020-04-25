@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AdminComponent } from './admin.component';
-import { AuthService } from '../services/auth.service';
-import { of } from 'rxjs';
+import { AdminComponent } from "./admin.component";
+import { AuthService } from "../services/auth.service";
+import { of } from "rxjs";
 
-describe('AdminComponent', () => {
+describe("AdminComponent", () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
 
@@ -14,7 +14,7 @@ describe('AdminComponent', () => {
         {
           provide: AuthService,
           useValue: {
-            user$: of({ uid: 'ABC123', email: 'test@email.com' }),
+            user$: of({ uid: "ABC123", email: "test@email.com" }),
           },
         },
       ],
@@ -28,7 +28,7 @@ describe('AdminComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
