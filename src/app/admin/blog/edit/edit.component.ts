@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { BlogService } from "../blog.service";
 import { Blog } from "../blog";
 import { ActivatedRoute } from "@angular/router";
@@ -8,6 +8,8 @@ import {
   Validators,
   FormBuilder,
 } from "@angular/forms";
+import { ContentChange, QuillEditorComponent } from "ngx-quill";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 @Component({
   selector: "app-blog-edit",
@@ -17,6 +19,11 @@ import {
 export class BlogEditComponent implements OnInit {
   id: string;
   blog: any;
+  @ViewChild("editor", {
+    static: true,
+  })
+  editor: QuillEditorComponent;
+
   constructor(
     public blogService: BlogService,
     private route: ActivatedRoute,
@@ -41,6 +48,13 @@ export class BlogEditComponent implements OnInit {
         });
       });
     });
+
+    this.editor.onContentChanged
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe((data: ContentChange) => {
+        // tslint:disable-next-line:no-console
+        console.log("view child + directly subscription", data);
+      });
   }
 
   async saveBlog() {
