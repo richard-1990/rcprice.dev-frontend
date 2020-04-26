@@ -18,7 +18,7 @@ export class BlogService {
     private snackService: SnackService
   ) {}
 
-  async createBlogEntry(title: string) {
+  async createBlogEntry(title: string): Promise<string | void> {
     const user = await this.auth.currentUser;
     return await this.db
       .collection("blogs")
@@ -35,7 +35,7 @@ export class BlogService {
       });
   }
 
-  async saveBlogEntry(id: string, blog: Blog) {
+  async saveBlogEntry(id: string, blog: Blog): Promise<void> {
     return await this.db
       .collection("blogs")
       .doc(id)
@@ -65,5 +65,10 @@ export class BlogService {
 
   getSingleBlog(id: string): Observable<Blog> {
     return this.db.collection("blogs").doc<Blog>(id).valueChanges();
+  }
+
+  async deleteBlog(id: string): Promise<void> {
+    await this.db.collection("blogs").doc<Blog>(id).delete();
+    this.snackService.firebaseSuccess("Blog Deleted");
   }
 }
