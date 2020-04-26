@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { AuthService } from "src/app/services/auth.service";
 import { SnackService } from "src/app/services/snack.service";
 import { Blog } from "./blog";
 import { map } from "rxjs/operators";
