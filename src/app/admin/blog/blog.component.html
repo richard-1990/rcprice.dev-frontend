@@ -2,6 +2,10 @@
   Create a new entry
 </button>
 
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
+</mat-form-field>
 <table mat-table [dataSource]="blogs" class="mat-elevation-z2 full-width">
   <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>

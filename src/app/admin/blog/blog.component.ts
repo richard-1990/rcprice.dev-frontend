@@ -4,6 +4,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { BlogCreateComponent } from "./create/create.component";
 import { BlogService } from "./blog.service";
 import { SelectionModel } from "@angular/cdk/collections";
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: "app-blog",
@@ -12,7 +13,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 })
 export class BlogComponent implements OnInit {
   displayedColumns: string[] = ["select", "title", "author", "createdAt"];
-  blogs = [];
+  blogs = new MatTableDataSource([]);
   title = "";
   selection = new SelectionModel(true, []);
 
@@ -20,7 +21,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogService.getBlogEntries().subscribe((blogs) => {
-      this.blogs = blogs;
+      this.blogs.data = blogs;
     });
   }
 
@@ -32,9 +33,14 @@ export class BlogComponent implements OnInit {
     });
   }
 
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.blogs.filter = filterValue.trim().toLowerCase();
+  }
+
   isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
-    const numRows = this.blogs.length;
+    const numRows = this.blogs.data.length;
     return numSelected === numRows;
   }
 
@@ -42,7 +48,7 @@ export class BlogComponent implements OnInit {
   masterToggle(): void {
     this.isAllSelected()
       ? this.selection.clear()
-      : this.blogs.forEach((row) => this.selection.select(row));
+      : this.blogs.data.forEach((row) => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
