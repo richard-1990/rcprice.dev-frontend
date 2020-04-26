@@ -1,10 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 
 import { BlogCreateComponent } from "./create/create.component";
 import { BlogService } from "./blog.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource } from "@angular/material/table";
+import { MatSort } from "@angular/material/sort";
+import { Blog } from "./blog";
 
 @Component({
   selector: "app-blog",
@@ -13,9 +15,11 @@ import { MatTableDataSource } from "@angular/material/table";
 })
 export class BlogComponent implements OnInit {
   displayedColumns: string[] = ["select", "title", "author", "createdAt"];
-  blogs = new MatTableDataSource([]);
+  blogs = new MatTableDataSource<Blog>([]);
   title = "";
   selection = new SelectionModel(true, []);
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(public dialog: MatDialog, public blogService: BlogService) {}
 
@@ -23,6 +27,7 @@ export class BlogComponent implements OnInit {
     this.blogService.getBlogEntries().subscribe((blogs) => {
       this.blogs.data = blogs;
     });
+    this.blogs.sort = this.sort;
   }
 
   openDialog(): void {
