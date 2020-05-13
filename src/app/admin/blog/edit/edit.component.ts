@@ -1,14 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { BlogService } from "../blog.service";
 import { Blog } from "../blog";
-import { ActivatedRoute } from "@angular/router";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  AbstractControl,
-} from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Validators, FormBuilder, AbstractControl } from "@angular/forms";
 import { ContentChange, QuillEditorComponent } from "ngx-quill";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
@@ -19,7 +13,7 @@ import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 })
 export class BlogEditComponent implements OnInit {
   id: string;
-  blog: any;
+  blog: Blog;
   @ViewChild("editor", {
     static: true,
   })
@@ -28,7 +22,8 @@ export class BlogEditComponent implements OnInit {
   constructor(
     public blogService: BlogService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   editBlogForm = this.fb.group({
@@ -58,12 +53,6 @@ export class BlogEditComponent implements OnInit {
       });
   }
 
-  async saveBlog(): Promise<void> {
-    if (this.editBlogForm.status === "VALID") {
-      await this.blogService.saveBlogEntry(this.id, this.editBlogForm.value);
-    }
-  }
-
   get title(): AbstractControl {
     return this.editBlogForm.get("title");
   }
@@ -77,5 +66,17 @@ export class BlogEditComponent implements OnInit {
 
   get labels(): AbstractControl {
     return this.editBlogForm.get("labels");
+  }
+
+  async saveBlog(): Promise<void> {
+    if (this.editBlogForm.status === "VALID") {
+      await this.blogService.saveBlogEntry(this.id, this.editBlogForm.value);
+      this.router.navigate(["/admin/blog"]);
+    }
+  }
+
+  async deleteBlog(): Promise<void> {
+    await this.blogService.deleteBlog(this.id);
+    this.router.navigate(["/admin/blog"], { replaceUrl: true });
   }
 }

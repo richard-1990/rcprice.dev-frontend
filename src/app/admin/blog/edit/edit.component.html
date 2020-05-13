@@ -1,9 +1,5 @@
 <h1>Edit</h1>
-<form
-  class="blog-create-form"
-  [formGroup]="editBlogForm"
-  (ngSubmit)="saveBlog()"
->
+<form id="blog-edit-form" [formGroup]="editBlogForm" (ngSubmit)="saveBlog()">
   <mat-form-field class="full-width">
     <mat-label>Title</mat-label>
     <input
@@ -34,12 +30,15 @@
       >Description must be at least 3 characters long.</mat-error
     >
   </mat-form-field>
+  <mat-label>Content</mat-label>
+
   <quill-editor
     #editor
     [formControl]="editBlogForm.controls['content']"
     formControlName="content"
   >
   </quill-editor>
+  <mat-error *ngIf="content?.errors?.required">Content is required.</mat-error>
 
   <mat-form-field class="full-width">
     <mat-label>Labels</mat-label>
@@ -55,6 +54,10 @@
       >Labels must be at least 3 characters long.</mat-error
     >
   </mat-form-field>
-  <input mat-button type="submit" value="save" />
+  <button mat-raised-button type="submit" color="primary">
+    Save
+  </button>
 </form>
-{{ blog | json }}
+<button mat-stroked-button color="warn" (click)="deleteBlog()">
+  Delete Post
+</button>

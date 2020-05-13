@@ -61,7 +61,7 @@ export class BlogComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? "select" : "deselect"} all`;
     }
-    return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${
+    return `${this.selection.isSelected(row.id) ? "deselect" : "select"} row ${
       row.position + 1
     }`;
   }

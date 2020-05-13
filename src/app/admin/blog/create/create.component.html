@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Create a new blog entry</h1>
 <div mat-dialog-content>
   <form
-    class="blog-create-form"
+    id="blog-create-form"
     [formGroup]="createBlogForm"
     (ngSubmit)="createNewBlog()"
   >
@@ -22,7 +22,9 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button color="error" (click)="onNoClick()">Cancel</button>
+  <button mat-button color="error" type="button" (click)="onNoClick()">
+    Cancel
+  </button>
   <button
     mat-raised-button
     type="submit"
