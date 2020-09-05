@@ -1,9 +1,9 @@
 export class Blog {
-  author: string;
-  title: string;
-  description?: string;
-  content?: string;
-  tags?: string;
+  author: string
+  title: string
+  description?: string
+  content?: string
+  tags?: string
 
   constructor({
     author,
@@ -12,11 +12,11 @@ export class Blog {
     content = null,
     tags = null,
   }) {
-    this.author = author;
-    this.title = title;
-    this.description = description;
-    this.content = content;
-    this.tags = tags;
+    this.author = author
+    this.title = title
+    this.description = description
+    this.content = content
+    this.tags = tags
   }
 }
 

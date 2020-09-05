@@ -1,9 +1,9 @@
-import { Blog } from "./blog";
+import { Blog } from './blog'
 
-describe("Blog", () => {
-  it("should create an instance", () => {
+describe('Blog', () => {
+  it('should create an instance', () => {
     expect(
-      new Blog({ title: "Example Blog", author: "sanfoiawhfowiq29" })
-    ).toBeTruthy();
-  });
-});
+      new Blog({ title: 'Example Blog', author: 'sanfoiawhfowiq29' })
+    ).toBeTruthy()
+  })
+})

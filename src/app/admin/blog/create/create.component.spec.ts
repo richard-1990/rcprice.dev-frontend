@@ -1,23 +1,23 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { BlogCreateComponent } from "./create.component";
-import { MatDialogRef } from "@angular/material/dialog";
-import { BlogService } from "../blog.service";
-import { of } from "rxjs";
-import { RouterTestingModule } from "@angular/router/testing";
+import { BlogCreateComponent } from './create.component'
+import { MatDialogRef } from '@angular/material/dialog'
+import { BlogService } from '../blog.service'
+import { of } from 'rxjs'
+import { RouterTestingModule } from '@angular/router/testing'
 
-describe("BlogCreateComponent", () => {
-  let component: BlogCreateComponent;
-  let fixture: ComponentFixture<BlogCreateComponent>;
-  let MockBlogService;
+describe('BlogCreateComponent', () => {
+  let component: BlogCreateComponent
+  let fixture: ComponentFixture<BlogCreateComponent>
+  let MockBlogService
 
   beforeEach(async(() => {
-    MockBlogService = jasmine.createSpyObj(["getSingleBlog"]);
+    MockBlogService = jasmine.createSpyObj(['getSingleBlog'])
     MockBlogService.getSingleBlog.and.returnValue(
       of({
-        title: "test",
+        title: 'test',
       })
-    );
+    )
 
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -26,16 +26,16 @@ describe("BlogCreateComponent", () => {
         { provide: MatDialogRef, useValue: {} },
         { provide: BlogService, useValue: MockBlogService },
       ],
-    }).compileComponents();
-  }));
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BlogCreateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(BlogCreateComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it('should create', () => {
+    expect(component).toBeTruthy()
+  })
+})

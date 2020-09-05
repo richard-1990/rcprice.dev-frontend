@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { UserProfileComponent } from "./user-profile.component";
-import { of } from "rxjs";
-import { RouterTestingModule } from "@angular/router/testing";
-import { AuthService } from "src/app/services/auth.service";
+import { UserProfileComponent } from './user-profile.component'
+import { of } from 'rxjs'
+import { RouterTestingModule } from '@angular/router/testing'
+import { AuthService } from 'src/app/services/auth.service'
 
-describe("UserProfileComponent", () => {
-  let component: UserProfileComponent;
-  let fixture: ComponentFixture<UserProfileComponent>;
+describe('UserProfileComponent', () => {
+  let component: UserProfileComponent
+  let fixture: ComponentFixture<UserProfileComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,21 +16,21 @@ describe("UserProfileComponent", () => {
         {
           provide: AuthService,
           useValue: {
-            user$: of({ uid: "ABC123", email: "test@email.com" }),
+            user$: of({ uid: 'ABC123', email: 'test@email.com' }),
           },
         },
       ],
       declarations: [UserProfileComponent],
-    }).compileComponents();
-  }));
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserProfileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(UserProfileComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it('should create', () => {
+    expect(component).toBeTruthy()
+  })
+})

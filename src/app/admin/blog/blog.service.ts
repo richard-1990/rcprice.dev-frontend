@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore } from "@angular/fire/firestore";
-import { SnackService } from "src/app/services/snack.service";
-import { Blog } from "./blog";
-import { map } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core'
+import { AngularFireAuth } from '@angular/fire/auth'
+import { AngularFirestore } from '@angular/fire/firestore'
+import { SnackService } from 'src/app/services/snack.service'
+import { Blog } from './blog'
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class BlogService {
   constructor(
@@ -17,51 +17,51 @@ export class BlogService {
   ) {}
 
   async createBlogEntry(title: string): Promise<string | void> {
-    const user = await this.auth.currentUser;
+    const user = await this.auth.currentUser
     return await this.db
-      .collection("blogs")
+      .collection('blogs')
       .add({
         title,
         authorId: user.uid,
         authorName: user.displayName,
       })
       .then((docRef) => {
-        return docRef.id;
+        return docRef.id
       })
       .catch((error) => {
-        this.snackService.firebaseError(error?.message);
-      });
+        this.snackService.firebaseError(error?.message)
+      })
   }
 
   async saveBlogEntry(id: string, blog: Blog): Promise<void> {
     return await this.db
-      .collection("blogs")
+      .collection('blogs')
       .doc(id)
       .set({ ...blog }, { merge: true })
       .then(() => {
-        this.snackService.firebaseSuccess("Saved");
+        this.snackService.firebaseSuccess('Saved')
       })
       .catch((error) => {
-        this.snackService.firebaseError(error?.message);
-      });
+        this.snackService.firebaseError(error?.message)
+      })
   }
 
   getBlogEntries(): Observable<Blog[]> {
     return this.db
-      .collection("blogs", (ref) => ref.orderBy("title"))
+      .collection('blogs', (ref) => ref.orderBy('title'))
       .snapshotChanges()
       .pipe(
         map((actions) =>
           actions.map((a) => {
-            const data = a.payload.doc.data() as Blog;
-            const id = a.payload.doc.id;
-            return { id, ...data };
+            const data = a.payload.doc.data() as Blog
+            const id = a.payload.doc.id
+            return { id, ...data }
           })
         )
-      );
+      )
   }
 
   getSingleBlog(id: string): Observable<Blog> {
-    return this.db.collection("blogs").doc<Blog>(id).valueChanges();
+    return this.db.collection('blogs').doc<Blog>(id).valueChanges()
   }
 }
