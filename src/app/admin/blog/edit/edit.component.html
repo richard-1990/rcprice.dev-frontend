@@ -42,19 +42,19 @@
   </quill-editor>
 
   <mat-form-field class="full-width">
-    <mat-label>Labels</mat-label>
+    <mat-label>Tags</mat-label>
     <input
       matInput
-      placeholder="My super cool blog labels"
-      name="labels"
-      formControlName="labels"
+      placeholder="My super cool blog tags"
+      name="tags"
+      formControlName="tags"
       required
     />
-    <mat-error *ngIf="labels?.errors?.required">Labels is required.</mat-error>
-    <mat-error *ngIf="labels?.errors?.minlength"
-      >Labels must be at least 3 characters long.</mat-error
+    <mat-error *ngIf="tags?.errors?.required">Tags are required.</mat-error>
+    <mat-error *ngIf="tags?.errors?.minlength"
+      >Tags must be at least 3 characters long.</mat-error
     >
   </mat-form-field>
-  <input type="submit" value="save" />
+  <input mat-raised-button type="submit" value="save" />
 </form>
 {{ blog | json }}

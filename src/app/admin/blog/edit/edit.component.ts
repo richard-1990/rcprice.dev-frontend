@@ -35,7 +35,7 @@ export class BlogEditComponent implements OnInit {
     title: ["", [Validators.required]],
     description: ["", Validators.required],
     content: ["", Validators.required],
-    labels: [""],
+    tags: [""],
   });
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -45,7 +45,7 @@ export class BlogEditComponent implements OnInit {
           title: blog.title,
           description: blog.description || "",
           content: blog.content || "",
-          labels: blog.labels || "",
+          tags: blog.tags || "",
         });
       });
     });
@@ -75,7 +75,7 @@ export class BlogEditComponent implements OnInit {
     return this.editBlogForm.get("content");
   }
 
-  get labels(): AbstractControl {
-    return this.editBlogForm.get("labels");
+  get tags(): AbstractControl {
+    return this.editBlogForm.get("tags");
   }
 }

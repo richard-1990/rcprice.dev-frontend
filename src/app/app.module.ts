@@ -11,7 +11,6 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { environment } from "../environments/environment";
-import { LayoutModule } from "@angular/cdk/layout";
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
@@ -26,7 +25,6 @@ import { SharedModule } from "./shared/shared.module";
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

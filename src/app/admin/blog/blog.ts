@@ -3,20 +3,20 @@ export class Blog {
   title: string;
   description?: string;
   content?: string;
-  labels?: string;
+  tags?: string;
 
   constructor({
     author,
     title,
     description = null,
     content = null,
-    labels = null,
+    tags = null,
   }) {
     this.author = author;
     this.title = title;
     this.description = description;
     this.content = content;
-    this.labels = labels;
+    this.tags = tags;
   }
 }
 

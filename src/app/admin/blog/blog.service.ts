@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { AuthService } from "src/app/services/auth.service";
 import { SnackService } from "src/app/services/snack.service";
 import { Blog } from "./blog";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
-// import { Blog } from './blog';
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +16,7 @@ export class BlogService {
     private snackService: SnackService
   ) {}
 
-  async createBlogEntry(title: string) {
+  async createBlogEntry(title: string): Promise<string | void> {
     const user = await this.auth.currentUser;
     return await this.db
       .collection("blogs")
@@ -35,7 +33,7 @@ export class BlogService {
       });
   }
 
-  async saveBlogEntry(id: string, blog: Blog) {
+  async saveBlogEntry(id: string, blog: Blog): Promise<void> {
     return await this.db
       .collection("blogs")
       .doc(id)
