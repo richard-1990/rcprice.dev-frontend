@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - release/*
 
 jobs:
   firebase-deploy:
@@ -20,7 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - run: npm run build:prod
+      - run: npm run build:ssr
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
