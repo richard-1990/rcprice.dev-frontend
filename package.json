@@ -11,7 +11,7 @@
     "lint": "eslint \"src/**/*.{js,ts}\"",
     "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix",
     "lint:ci": "eslint \"src/**/*.{js,ts}\" --quiet",
-    "prettier": "prettier --write 'src/**/*.{ts,js,scss}'",
+    "prettier": "prettier --write 'src/**/*.{ts,js,scss,html}'",
     "e2e": "ng e2e",
     "dev:ssr": "ng run front-end:serve-ssr",
     "serve:ssr": "node dist/front-end/server/main.js",
