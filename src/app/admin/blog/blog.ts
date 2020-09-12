@@ -3,7 +3,7 @@ export class Blog {
   title: string
   description?: string
   content?: string
-  tags?: string
+  tags?: Tag[]
 
   constructor({
     author,
@@ -20,6 +20,6 @@ export class Blog {
   }
 }
 
-class Label {
+class Tag {
   constructor(public name: string) {}
 }

@@ -11,9 +11,7 @@ export class SnackService {
   constructor(private snackBar: MatSnackBar, private router: Router) {}
 
   authError(): Subscription {
-    this.snackBar.open('You must be logged in!', 'OK', {
-      duration: 5000,
-    })
+    this.snackBar.open('You must be logged in to view this page!', 'OK')
 
     return this.snackBar._openedSnackBarRef
       .onAction()

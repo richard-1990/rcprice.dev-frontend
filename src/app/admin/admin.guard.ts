@@ -6,6 +6,8 @@ import {
 } from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/auth'
 import { SnackService } from '../services/snack.service'
+import { map, take, tap } from 'rxjs/operators'
+import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +15,18 @@ import { SnackService } from '../services/snack.service'
 export class AdminGuard implements CanActivate {
   constructor(private afAuth: AngularFireAuth, private snack: SnackService) {}
 
-  async canActivate(
-    next: ActivatedRouteSnapshot,
+  canActivate(
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<boolean> {
-    const user = await this.afAuth.currentUser
-    const isLoggedIn = !!user
-    // if (!isLoggedIn) {
-    //   this.snack.authError();
-    // }
-    return true
-    // return isLoggedIn;
+  ): Observable<boolean> {
+    return this.afAuth.authState.pipe(
+      take(1),
+      map((user) => !!user),
+      tap((loggedIn) => {
+        if (!loggedIn) {
+          this.snack.authError()
+        }
+      })
+    )
   }
 }
