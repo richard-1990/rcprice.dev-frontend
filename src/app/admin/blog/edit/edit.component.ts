@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { BlogService } from '../blog.service'
-import { Blog } from '../blog'
+import { Blog, Tag } from '../blog'
 import { ActivatedRoute } from '@angular/router'
 import {
   FormGroup,
@@ -24,6 +24,8 @@ export class BlogEditComponent implements OnInit {
     static: true,
   })
   editor: QuillEditorComponent
+  allItems: string[] = ['npm', 'node', 'express', 'graphql', 'rest']
+  items: string[] = ['Lemon']
 
   constructor(
     public blogService: BlogService,
@@ -45,7 +47,7 @@ export class BlogEditComponent implements OnInit {
           title: blog.title,
           description: blog.description || '',
           content: blog.content || '',
-          tags: blog.tags || '',
+          tags: blog.tags || [],
         })
       })
     })
@@ -54,7 +56,7 @@ export class BlogEditComponent implements OnInit {
       .pipe(debounceTime(400), distinctUntilChanged())
       .subscribe((data: ContentChange) => {
         // tslint:disable-next-line:no-console
-        console.log('view child + directly subscription', data)
+        // console.log('view child + directly subscription', data)
       })
   }
 

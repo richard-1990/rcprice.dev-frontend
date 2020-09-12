@@ -13,8 +13,10 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatTableModule } from '@angular/material/table'
-import { LayoutModule } from '@angular/cdk/layout'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
+import { LayoutModule } from '@angular/cdk/layout'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 const modules = [
@@ -33,6 +35,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
+  MatChipsModule,
+  MatAutocompleteModule,
   LayoutModule,
 ]
 

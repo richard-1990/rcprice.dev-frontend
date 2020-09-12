@@ -14,7 +14,8 @@ import { BlogCreateComponent } from './blog/create/create.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { AdminGuard } from './admin.guard'
 import { ProjectsComponent } from './projects/projects.component'
-import { SharedModule } from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module';
+import { AutocompleteChipsComponent } from './components/autocomplete-chips/autocomplete-chips.component'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SharedModule } from '../shared/shared.module'
     BlogEditComponent,
     BlogCreateComponent,
     ProjectsComponent,
+    AutocompleteChipsComponent,
   ],
   imports: [
     SharedModule,

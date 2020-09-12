@@ -20,6 +20,8 @@ export class Blog {
   }
 }
 
-class Tag {
-  constructor(public name: string) {}
+export class Tag {
+  constructor(public name: string) {
+    this.name = name
+  }
 }

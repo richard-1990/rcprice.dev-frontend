@@ -21,8 +21,6 @@ export class BlogComponent implements OnInit {
     })
   }
 
-  title = ''
-
   openDialog(): void {
     const dialogRef = this.dialog.open(BlogCreateComponent)
 

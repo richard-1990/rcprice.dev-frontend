@@ -41,20 +41,13 @@
   >
   </quill-editor>
 
-  <mat-form-field class="full-width">
-    <mat-label>Tags</mat-label>
-    <input
-      matInput
-      placeholder="My super cool blog tags"
-      name="tags"
-      formControlName="tags"
-      required
-    />
-    <mat-error *ngIf="tags?.errors?.required">Tags are required.</mat-error>
-    <mat-error *ngIf="tags?.errors?.minlength"
-      >Tags must be at least 3 characters long.</mat-error
-    >
-  </mat-form-field>
-  <input mat-raised-button type="submit" value="save" />
+  <app-autocomplete-chips
+    [allItems]="allItems"
+    [items]="tags.value"
+    [formGroup]="editBlogForm"
+  ></app-autocomplete-chips>
+
+  <button mat-raised-button color="primary" aria-label="Save blog post">
+    Save
+  </button>
 </form>
-{{ blog | json }}
