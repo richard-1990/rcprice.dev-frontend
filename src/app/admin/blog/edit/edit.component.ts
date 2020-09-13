@@ -19,7 +19,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 })
 export class BlogEditComponent implements OnInit {
   id: string
-  blog: any
+  blog: Blog
   @ViewChild('editor', {
     static: true,
   })
@@ -36,7 +36,7 @@ export class BlogEditComponent implements OnInit {
   editBlogForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', Validators.required],
-    content: ['', Validators.required],
+    content: [''],
     tags: [''],
   })
   ngOnInit(): void {

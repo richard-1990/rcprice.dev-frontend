@@ -21,12 +21,12 @@ export class SnackService {
 
   firebaseError(message?: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 5000,
+      duration: 1000,
     })
   }
   firebaseSuccess(message?: string): void {
     this.snackBar.open(message, 'OK', {
-      duration: 5000,
+      duration: 1000,
     })
   }
 }
