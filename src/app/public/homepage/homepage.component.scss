@@ -1,11 +1,11 @@
-section {
-  text-align: center;
-  min-height: 50vh;
+aside {
+  width: 20%;
+  height: 100%;
 }
-#herobanner {
+
+main {
+  width: 80%;
   height: 100vh;
-  width: 100%;
-  background: #303c4a;
   color: white;
   display: flex;
   align-items: center;
