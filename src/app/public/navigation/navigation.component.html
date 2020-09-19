@@ -1,13 +1,48 @@
-<nav>
-  <section id="profile">
-    <div mat-card-avatar class="avatar"></div>
+<nav class="h-screen text-white bg-blue-500">
+  <section class="flex flex-col align-middle items-center py-5 px-20">
+    <div mat-card-avatar class="h-24 w-24 rounded-full m-5 avatar"></div>
     <h4>Richard Price</h4>
   </section>
-  <ul>
-    <li><a routerLinkActive="active" routerLink="">Home</a></li>
-    <li><a routerLinkActive="active" routerLink="about-me">About Me</a></li>
-    <li><a routerLinkActive="active" routerLink="portfolio">Portfolio</a></li>
-    <li><a routerLinkActive="active" routerLink="blog">Blog</a></li>
-    <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
+  <ul class="list-none">
+    <li>
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink=""
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink="about-me"
+        >About Me</a
+      >
+    </li>
+    <li>
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink="portfolio"
+        >Portfolio</a
+      >
+    </li>
+    <li>
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink="blog"
+        >Blog</a
+      >
+    </li>
+    <li>
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink="contact"
+        >Contact</a
+      >
+    </li>
   </ul>
 </nav>
