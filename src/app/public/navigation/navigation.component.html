@@ -1,9 +1,16 @@
-<nav>
-  <ul>
-    <li>Home</li>
-    <li>About</li>
-    <li>Portfolio</li>
-    <li>Blog</li>
-    <li>Contact</li>
+<nav class="h-screen text-white bg-blue-500">
+  <section class="flex flex-col align-middle items-center py-5 px-20">
+    <div mat-card-avatar class="h-24 w-24 rounded-full m-5 avatar"></div>
+    <h4>Richard Price</h4>
+  </section>
+  <ul class="list-none">
+    <li *ngFor="let item of menu">
+      <a
+        class="block px-10 py-5 hover:bg-blue-700 duration-200 active:bg-blue-700"
+        routerLinkActive="active"
+        routerLink="{{ item.routerLink }}"
+        >{{ item.title }}</a
+      >
+    </li>
   </ul>
 </nav>
